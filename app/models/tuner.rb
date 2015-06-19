@@ -1,0 +1,3 @@
+class Tuner < ActiveRecord::Base
+	has_many :recordings
+end

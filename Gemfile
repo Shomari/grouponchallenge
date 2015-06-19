@@ -23,5 +23,6 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails'
   gem 'rspec-collection_matchers'
+	gem 'database_cleaner', '~> 1.4.1'
 end
 

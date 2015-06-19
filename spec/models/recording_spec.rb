@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Recording, :type => :model do
-	let!(:recording) { Recording.create!(start_time: Time.now + 1.hour, end_time: Time.now + 4.hours, channel: 1 )}
+
+	let!(:tuner) {Tuner.create!}
+	let!(:recording) { Recording.create!(start_time: Time.now + 1.hour, end_time: Time.now + 4.hours, channel: 1, tuner: tuner )}
 
 	describe "validation methods" do
 		it "adds an error of the end time is set before the start time" do
@@ -22,7 +24,7 @@ RSpec.describe Recording, :type => :model do
 
 	describe "class methods" do
 		it "gets future recordings" do
-			records = Recording.get_future_recordings
+			records = Recording.get_future_recordings_for_tuner(1)
 			expect(records.count).to eq(1)
 		end
 	end
